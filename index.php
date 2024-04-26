@@ -17,6 +17,14 @@ require_once 'view/partials/header.php'
                 </div>
             </div>
         </nav>
+        <?php
+        if (!isset($_SESSION['access_token']) || !$_SESSION['access_token']) {
+        ?>
+            <div class="alert alert-danger" role="alert">
+                <strong>Alert!!:</strong> You are not connected to google calendar. Please click 'Connect Calendar' in top right corner.
+            </div>
+        <?php
+        } ?>
         <div class="row justify-content-between mt-4">
             <div class="col-md-6">
                 <h4>Events</h4>
@@ -41,7 +49,7 @@ require_once 'view/partials/header.php'
                     </thead>
                     <tbody>
                         <?php if (isset($_SESSION['access_token'])) {
-                            $incr=1;
+                            $incr = 1;
                             $events = $eventController->listEvents();
                             if (empty($events)) {
                                 echo "<tr><td colspan='5'>No events found. Please create new event.</td> </tr>";
@@ -71,11 +79,10 @@ require_once 'view/partials/header.php'
                                     <td>{$endDateTime}</td>
                                     <td>" . substr($event->getId(), 0, 40) . "</td>
                                     </tr>";
-                                    $incr=$incr+1;
+                                    $incr = $incr + 1;
                                 }
                             }
                         } else {
-                            echo "<tr><td colspan='5'>Calendar disconnected. Please click top right button 'Connect Calendar'.</td> </tr>";
                         }
                         ?>
                     </tbody>
@@ -89,4 +96,3 @@ require_once 'view/partials/header.php'
 require_once 'view/partials/footer.php';
 require_once 'view/events/add.php';
 require_once 'view/events/delete.php';
-
