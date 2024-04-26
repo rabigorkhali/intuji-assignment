@@ -55,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['access_token'])) {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         removeParametersFromUrl();
+                        window.location.href = 'index.php';
                     }
                 });
             </script>";
