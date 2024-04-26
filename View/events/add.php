@@ -52,6 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['access_token'])) {
                     icon: 'success',
                     title: 'Success',
                     text: '{$responseCreateEvent['message']}'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = 'index.php'; // Redirect to index.php
+                    }
                 });
             </script>";
     } else {
@@ -62,7 +66,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['access_token'])) {
                     text: '{$responseCreateEvent['message']}'
                 });
             </script>";
-    }
+    }    
+    exit();
 }
 ?>
 <!--END  EVENT ADD  -->
