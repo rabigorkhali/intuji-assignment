@@ -62,9 +62,7 @@ class eventController
                     $domain = $error['domain'];
                     $reason = $error['reason'];
                     $message = $error['message'];
-                    $locationType = $error['locationType'];
-                    $location = $error['location'];
-                    $error = "Error: Event delete failed. $domain - $reason: $message (Location: $locationType - $location)";
+                    $error = "Error: Event delete failed. $domain - $reason: $message";
                     $data['success'] = false;
                     $data['message'] = $error;
                 }

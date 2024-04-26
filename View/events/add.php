@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['access_token'])) {
                     text: '{$responseCreateEvent['message']}'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = 'index.php'; // Redirect to index.php
+                        removeParametersFromUrl();
                     }
                 });
             </script>";
