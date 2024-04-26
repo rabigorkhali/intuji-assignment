@@ -1,30 +1,16 @@
 <?php
- session_start(); 
- require_once 'Controller/EventController.php';
- require_once 'Service/GoogleApiService.php';
- $eventController = new EventController();
- $googleApiService = new GoogleApiService();
+session_start();
+require_once __DIR__ . '/Controller/EventController.php';
+$eventController = new EventController;
+require_once 'view/partials/header.php'
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Calendar Plugin</title>
-</head>
 
 <body>
     <h1>Google Calendar Plugin</h1>
-
+    <?php include 'view/partials/connect-disconnect.php' ?>
     <?php
-    if (!isset($_SESSION['access_token']) || !$_SESSION['access_token']) {
+    if (isset($_SESSION['access_token'])) {
+        $eventController->listEvents();
+    }
     ?>
-        <a href="<?php $googleApiService->authorize() ?>">Connect to Google Calendar</a>
-    <?php
-    } else { ?>
-        <a href="disconnect.php">Disconnect from Google Calendar</a>
-    <?php }
-    ?>
-
 </body>

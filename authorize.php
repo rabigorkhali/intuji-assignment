@@ -1,8 +1,8 @@
 <?php
-require_once 'vendor/autoload.php';
+session_start();
+require_once 'functions.php';
 
 $client = getClient();
 $authUrl = $client->createAuthUrl();
 
-echo "<a href='$authUrl'>Click here to authorize</a>";
-?>
+header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));

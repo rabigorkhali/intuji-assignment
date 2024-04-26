@@ -1,12 +1,11 @@
 <?php
 session_start();
-require_once 'vendor/autoload.php';
+require_once 'functions.php';
 
 $client = getClient();
-$client->authenticate($_GET['code']);
-$_SESSION['access_token'] = $client->getAccessToken();
+$accessToken = $client->fetchAccessTokenWithAuthCode($_GET['code']);
 
-// Redirect to index.php after successful authentication
+// Store access token in session
+$_SESSION['access_token'] = $accessToken;
+
 header('Location: index.php');
-exit();
-?>

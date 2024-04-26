@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/vendor/autoload.php';
+
 function getClient() {
     $client = new Google_Client();
     $client->setApplicationName('Google Calendar Plugin');
@@ -22,7 +24,6 @@ function getClient() {
         $_SESSION['access_token'] = json_encode($accessToken); // Store the JSON-encoded access token
         $_SESSION['refresh_token'] = $client->getRefreshToken(); // Save the refresh token
     }
-
     return $client;
 }
 

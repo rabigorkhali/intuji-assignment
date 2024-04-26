@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
+require_once 'functions.php';
 
 class GoogleApiService
 {
@@ -8,6 +9,14 @@ class GoogleApiService
     {
         $client = getClient();
         $authUrl = $client->createAuthUrl();
-        echo $authUrl;
+        return  filter_var($authUrl, FILTER_SANITIZE_URL);
+    }
+
+    function disconnect()
+    {
+        session_start();
+        session_unset();
+        session_destroy();
+        header('Location: index.php');
     }
 }
