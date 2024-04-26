@@ -35,21 +35,17 @@ require_once 'view/partials/header.php'
                         <?php if (isset($_SESSION['access_token'])) {
                             $events = $eventController->listEvents();
                             if (empty($events)) {
-                                echo "<tr><td colspan='3'>No events found</td> </tr>";
+                                echo "<tr><td colspan='5'>No events found. Please create new event.</td> </tr>";
                             } else {
                                 foreach ($events as $event) {
 
                                     $startDateTime = null;
                                     $endDateTime = null;
-
-                                    // Check if start date/time is set
                                     if ($event->getStart() && $event->getStart()->getDateTime()) {
-                                        $startDateTime = $event->getStart()->getDateTime()?? 'Not specified';
+                                        $startDateTime = $event->getStart()->getDateTime() ?? 'Not specified';
                                     }
-
-                                    // Check if end date/time is set
                                     if ($event->getEnd() && $event->getEnd()->getDateTime()) {
-                                        $endDateTime = $event->getEnd()->getDateTime()?? 'Not specified';
+                                        $endDateTime = $event->getEnd()->getDateTime() ?? 'Not specified';
                                     }
 
                                     echo "<tr>
@@ -61,6 +57,8 @@ require_once 'view/partials/header.php'
                                     </tr>";
                                 }
                             }
+                        } else {
+                            echo "<tr><td colspan='5'>Calendar disconnected. Please click top right button 'Connect Calendar'.</td> </tr>";
                         }
                         ?>
                     </tbody>
