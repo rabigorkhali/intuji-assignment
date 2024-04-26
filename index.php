@@ -22,7 +22,7 @@ require_once 'view/partials/header.php'
                 <h4>Events</h4>
             </div>
             <div class="col-md-6 text-end">
-                <a href="#" class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal" data-bs-target="#addEventModal">Add Event</a>
+                <a href="#" class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal" data-bs-target="#addEventModal"> Add Event</a>
             </div>
         </div>
 
@@ -32,6 +32,7 @@ require_once 'view/partials/header.php'
                     <thead>
                         <tr>
                             <th>SN</th>
+                            <th>Action</th>
                             <th>Event Name</th>
                             <th>StartDate</th>
                             <th>End Date</th>
@@ -57,6 +58,12 @@ require_once 'view/partials/header.php'
 
                                     echo "<tr>
                                     <td>234</td>
+                                    <td>
+                <form id='deleteForm{$event->getId()}' action='delete_event.php' method='POST'>
+                    <input type='hidden' name='event_id' value='{$event->getId()}'>
+                    <button type='button' class='btn btn-sm btn-danger' onclick='confirmDelete(\"{$event->getId()}\")'>Delete</button>
+                </form>
+            </td>                                    
                                     <td>{$event->getSummary()}</td>
                                     <td>{$startDateTime}</td>
                                     <td>{$endDateTime}</td>
@@ -79,4 +86,20 @@ require_once 'view/partials/header.php'
 require_once 'view/events/add.php';
 require_once 'view/partials/footer.php';
 ?>
-
+<script>
+    function confirmDelete(eventId) {
+        Swal.fire({
+            title: 'Confirm Delete',
+            text: 'Are you sure you want to delete this event?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('deleteForm' + eventId).submit();
+            }
+        });
+    }
+</script>
