@@ -1,8 +1,8 @@
 <?php
-require_once 'Model/EventModel.php';
-require_once 'View/EventView.php';
+require_once 'model/eventModel.php';
+require_once 'view/eventView.php';
 
-class EventController {
+class eventController {
     private $eventModel;
     private $eventView;
 

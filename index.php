@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once __DIR__ . '/Controller/EventController.php';
-$eventController = new EventController;
+require_once __DIR__ . '/controller/eventController.php';
+$eventController = new eventController;
 require_once 'view/partials/header.php'
 ?>
 

@@ -3,7 +3,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../helpers.php';
 
 
-class EventModel
+class eventModel
 {
     private $client;
     private $googleServiceCalendar;
