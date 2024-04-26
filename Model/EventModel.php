@@ -23,6 +23,11 @@ class eventModel
     public function createEvent($eventData, $calendarId = 'primary')
     {
         $event = new Google_Service_Calendar_Event($eventData);
-        return $this->googleServiceCalendar->events->insert($calendarId, $event);
+        $createdEvent= $this->googleServiceCalendar->events->insert($calendarId, $event);
+        if ($createdEvent) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

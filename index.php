@@ -22,7 +22,7 @@ require_once 'view/partials/header.php'
                 <h4>Events</h4>
             </div>
             <div class="col-md-6 text-end">
-                <a href="#" class="btn btn-sm btn-outline-primary mt-2">Add Event</a>
+                <a href="#" class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal" data-bs-target="#addEventModal">Add Event</a>
             </div>
         </div>
 
@@ -76,5 +76,7 @@ require_once 'view/partials/header.php'
 </body>
 
 <?php
-require_once 'view/partials/footer.php'
+require_once 'view/events/add.php';
+require_once 'view/partials/footer.php';
 ?>
+
