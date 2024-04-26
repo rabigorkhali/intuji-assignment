@@ -1,6 +1,8 @@
 <?php
-class EventView {
+class eventView {
     public function displayEvents($events) {
+
+
         if (empty($events)) {
             echo 'No upcoming events found.';
         } else {

@@ -13,7 +13,8 @@ class eventController {
 
     public function listEvents() {
         $events = $this->eventModel->listEvents();
-        $this->eventView->displayEvents($events);
+        return $events;
+        // $this->eventView->displayEvents($events);
     }
 
     public function createEvent($eventData) {
