@@ -41,6 +41,7 @@ require_once 'view/partials/header.php'
                     </thead>
                     <tbody>
                         <?php if (isset($_SESSION['access_token'])) {
+                            $incr=1;
                             $events = $eventController->listEvents();
                             if (empty($events)) {
                                 echo "<tr><td colspan='5'>No events found. Please create new event.</td> </tr>";
@@ -57,7 +58,7 @@ require_once 'view/partials/header.php'
                                     }
 
                                     echo "<tr>
-                                    <td>234</td>
+                                    <td>{$incr}</td>
                                     <td>
                                          <form id='deleteForm{$event->getId()}' action='index.php' method='get' name='deleteEvent'>
                                             <input type='hidden' name='event_id' value='{$event->getId()}'>
@@ -70,6 +71,7 @@ require_once 'view/partials/header.php'
                                     <td>{$endDateTime}</td>
                                     <td>" . substr($event->getId(), 0, 40) . "</td>
                                     </tr>";
+                                    $incr=$incr+1;
                                 }
                             }
                         } else {
