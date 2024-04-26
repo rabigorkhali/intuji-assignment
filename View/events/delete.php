@@ -28,6 +28,7 @@ if ($_GET['_method'] ?? null == '_Delete' && isset($_SESSION['access_token'])) {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         removeParametersFromUrl();
+                        window.location.href = 'index.php';
                     }
                 });
             </script>";
