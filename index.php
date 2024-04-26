@@ -17,10 +17,17 @@ require_once 'view/partials/header.php'
                 </div>
             </div>
         </nav>
+        <div class="row justify-content-between mt-4">
+            <div class="col-md-6">
+                <h4>Events</h4>
+            </div>
+            <div class="col-md-6 text-end">
+                <a href="#" class="btn btn-sm btn-outline-primary mt-2">Add Event</a>
+            </div>
+        </div>
 
         <div class="row justify-content-center mt-4">
             <div class="col-md-12">
-                <h4>Events</h4>
                 <table id="eventTable" class="table table-striped table-bordered display" style="width:100%">
                     <thead>
                         <tr>
