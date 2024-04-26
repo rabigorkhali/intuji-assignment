@@ -1,6 +1,6 @@
 <footer class="footer mt-auto py-3 bg-light">
     <div class="container text-center">
-        <span class="text-muted">Assignment of <a target="_blank" href="https://rabigorkhali.com.np"> Rabi Gorkhali </a></span>
+        <span class="text-muted">Intuji Tech - Assignment of <a target="_blank" href="https://rabigorkhali.com.np"> Rabi Gorkhali </a></span>
     </div>
 </footer>
 
