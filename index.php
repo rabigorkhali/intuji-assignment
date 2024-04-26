@@ -59,11 +59,12 @@ require_once 'view/partials/header.php'
                                     echo "<tr>
                                     <td>234</td>
                                     <td>
-                <form id='deleteForm{$event->getId()}' action='delete_event.php' method='POST'>
-                    <input type='hidden' name='event_id' value='{$event->getId()}'>
-                    <button type='button' class='btn btn-sm btn-danger' onclick='confirmDelete(\"{$event->getId()}\")'>Delete</button>
-                </form>
-            </td>                                    
+                                         <form id='deleteForm{$event->getId()}' action='index.php' method='get' name='deleteEvent'>
+                                            <input type='hidden' name='event_id' value='{$event->getId()}'>
+                                            <input type='hidden' name='_method' value='DELETE'> 
+                                            <button type='button' class='btn btn-sm btn-danger' onclick='confirmDelete(\"{$event->getId()}\")'>Delete</button>
+                                        </form>
+                                    </td>                                    
                                     <td>{$event->getSummary()}</td>
                                     <td>{$startDateTime}</td>
                                     <td>{$endDateTime}</td>
@@ -85,6 +86,34 @@ require_once 'view/partials/header.php'
 <?php
 require_once 'view/events/add.php';
 require_once 'view/partials/footer.php';
+
+if ($_GET['_method'] ?? null == '_Delete' && isset($_SESSION['access_token'])) {
+    $eventId = $_GET['event_id'];
+    $deleteResponse = $eventController->deleteEvent($eventId);
+    if ($deleteResponse['success']) {
+        echo "<script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: '{$deleteResponse['message']}'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = 'index.php'; // Redirect to index.php
+                    }
+                });
+            </script>";
+    } else {
+        echo "<script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: '{$deleteResponse['message']}'
+                });
+            </script>";
+    }
+    exit();
+}
+
 ?>
 <script>
     function confirmDelete(eventId) {

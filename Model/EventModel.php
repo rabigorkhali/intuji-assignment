@@ -23,8 +23,20 @@ class eventModel
     public function createEvent($eventData, $calendarId = 'primary')
     {
         $event = new Google_Service_Calendar_Event($eventData);
-        $createdEvent= $this->googleServiceCalendar->events->insert($calendarId, $event);
+        $createdEvent = $this->googleServiceCalendar->events->insert($calendarId, $event);
         if ($createdEvent) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function deleteEvent($eventId, $calendarId = 'primary')
+    {
+        $client = getClient();
+        $service = new Google_Service_Calendar($client);
+        $deleteEvent = $service->events->delete($calendarId, $eventId);
+        if ($deleteEvent) {
             return true;
         } else {
             return false;
