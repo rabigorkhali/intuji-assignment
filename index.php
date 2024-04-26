@@ -20,9 +20,12 @@ require_once 'view/partials/header.php'
             <div class="col-md-6">
                 <h4>Events</h4>
             </div>
-            <div class="col-md-6 text-end">
-                <a href="#" class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal" data-bs-target="#addEventModal"> Add Event</a>
-            </div>
+            <?php if (isset($_SESSION['access_token'])) {
+            ?>
+                <div class="col-md-6 text-end">
+                    <a href="#" class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal" data-bs-target="#addEventModal"> Add Event</a>
+                </div>
+            <?php } ?>
         </div>
         <?php require_once 'view/events/list.php';
         ?>
