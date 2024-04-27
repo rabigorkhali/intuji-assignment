@@ -21,6 +21,7 @@ function getClient() {
         $_SESSION['access_token'] = json_encode($accessToken); 
         $_SESSION['refresh_token'] = $client->getRefreshToken(); 
     }
+    // var_dump($_SESSION); die();
     return $client;
 }
 
