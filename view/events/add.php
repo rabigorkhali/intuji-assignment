@@ -7,18 +7,17 @@
             </div>
             <form action="index.php" method="post">
                 <div class="modal-body">
-                    <!-- Add your form or content for adding an event here -->
                     <div>
-                        <label for="event_name" class="form-label">Event Name</label>
-                        <input required type="text" id="event_name" name="event_name" class="form-control" required><br>
+                        <label for="event_name" class="form-label">Event Name<span class="text-danger">*</span></label>
+                        <input required type="text" id="event_name" placeholder="Enter event name" max="100" name="event_name" class="form-control" required><br>
                     </div>
                     <div class="">
-                        <label for="event_start" class="form-label">Event Start Date</label>
-                        <input required type="datetime-local" id="event_start" name="start" class="form-control" required><br>
+                        <label for="event_start" class="form-label">Start Date<span class="text-danger">*</span></label>
+                        <input required type="datetime-local" id="event_start" name="start" class="form-control" value="<?php echo date('Y-m-d\TH:i'); ?>" required><br>
                     </div>
                     <div>
-                        <label for="event_end" class="form-label">Event End Date</label>
-                        <input required type="datetime-local" id="event_end" name="end" class="form-control" required><br>
+                        <label for="event_end" class="form-label">End Date<span class="text-danger">*</span></label>
+                        <input required type="datetime-local" id="event_end" name="end" class="form-control" value="<?php echo date('Y-m-d\TH:i'); ?>" required><br>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -67,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['access_token'])) {
                     text: '{$responseCreateEvent['message']}'
                 });
             </script>";
-    }    
+    }
     exit();
 }
 ?>
