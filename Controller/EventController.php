@@ -7,7 +7,7 @@ class eventController
 
     public function __construct()
     {
-        $this->eventModel  = new EventModel();
+        $this->eventModel  = new eventModel();
     }
 
     public function listEvents()

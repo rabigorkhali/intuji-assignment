@@ -28,36 +28,4 @@ function getClient() {
 }
 
 
-
-
-function listEvents() {
-    $client = getClient();
-    $service = new Google_Service_Calendar($client);
-
-    $calendarId = 'primary';
-
-    $events = $service->events->listEvents($calendarId);
-
-    // if (empty($events->getItems())) {
-    //     echo 'No upcoming events found.';
-    // } else {
-    //     echo '<h3>Upcoming Events:</h3>';
-    //     foreach ($events->getItems() as $event) {
-    //         print_r($event->id()); die();
-
-    //         echo '<div>' . $event->getSummary() . '</div>';
-    //     }
-    // }
-
-    if (empty($events->getItems())) {
-        echo 'No upcoming events found.';
-    } else {
-        echo '<h3>Upcoming Events:</h3>';
-        foreach ($events->getItems() as $event) {
-            echo '<div>Event ID: ' . $event->getId() . '</div>';
-            echo '<div>Event Summary: ' . $event->getSummary() . '</div>';
-            echo '<br>';
-        }
-    }
-}
 ?>
