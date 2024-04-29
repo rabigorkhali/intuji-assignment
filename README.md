@@ -11,7 +11,7 @@ This is an assignment provided by Injuti Tech for a powerful PHP project designe
 
 ## Installation
 
-Note: Please access my assignment directly through. https://intuji.rabigorkhali.com.np/ 
+Note: Please access my assignment directly through. https://intuji.rabigorkhali.com.np
 
 ### Project Requirements
 
