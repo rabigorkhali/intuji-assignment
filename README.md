@@ -11,6 +11,8 @@ This is an assignment provided by Injuti Tech for a powerful PHP project designe
 
 ## Installation
 
+Note: Please access my assignment directly through. https://intuji.rabigorkhali.com.np/ 
+
 ### Project Requirements
 
 - PHP: 8.2
@@ -38,7 +40,8 @@ This is an assignment provided by Injuti Tech for a powerful PHP project designe
    
 5. Access the project:
    ```
-   http://localhost:8006
+   Local: http://localhost:8006
+   Live: https://intuji.rabigorkhali.com.np/ 
    ```
 
 Please keep the port and URL the same as `http://localhost:8006` since we have to allow callback URLs in Google Console, and currently, only the above URL is permitted. To change the URL, we will have to go to Google Console and submit the desired URL.
